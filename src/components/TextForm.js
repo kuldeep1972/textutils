@@ -4,16 +4,19 @@ export default function TextForm(props) {
 
   const handleOnChange = (e) => {
     setText(e.target.value)
+    
   }
 
   const handleUpClick = () => {
     let newText = text.toUpperCase()
     setText(newText)
+    props.showAlert("Converted to Uppercase","success")
   }
 
   const handleLowClick = () => {
     let newText = text.toLowerCase()
     setText(newText)
+    props.showAlert("Converted to LowerCase","success")
   }
 
   const handleWordCount = () => {
