@@ -3,8 +3,7 @@ import React, { useState } from 'react'
 export default function TextForm(props) {
 
   const handleOnChange = (e) => {
-    setText(e.target.value)
-    
+    setText(e.target.value)    
   }
 
   const handleUpClick = () => {
@@ -44,11 +43,11 @@ export default function TextForm(props) {
           <label htmlFor="myBox" className="form-label">Words</label>
           <textarea className="form-control" id="myBox" rows="8" value={text} onChange={handleOnChange} style={{backgroundColor:(props.mode==='light')?'white':'grey',color:(props.mode==='light')?'black':'white'}}/>
         </div>
-        <button type="button" className="btn btn-primary mx-2" onClick={handleUpClick}>Convert to Upper Case</button>
-        <button type="button" className="btn btn-primary mx-2" onClick={handleLowClick}>Convert to Lower Case</button>
+        <button type="button" className="btn btn-primary mx-2 my-1" onClick={handleUpClick}>Convert to Upper Case</button>
+        <button type="button" className="btn btn-primary mx-2 my-1" onClick={handleLowClick}>Convert to Lower Case</button>
         <div className="wordCount my-3 row">
           <div className="col">
-            <button type="button" className="btn btn-secondary mx-2" onClick={handleWordCount}>Word Count</button>
+            <button type="button" className="btn btn-secondary mx-2 my-1" onClick={handleWordCount}>Word Count</button>
           </div>
           <div className="col">
             <div className="input-group col">
@@ -64,8 +63,8 @@ export default function TextForm(props) {
         </div>
         <div className="container my-3" style={{color:(props.mode==='light')?'black':'white'}}>
           <h2>Your Summary</h2>
-          <p>{text.split(" ").length - 1} words, {text.length} characters</p>
-          <p>{text.split(" ").length * 0.008} minutes to read</p>
+          <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words, {text.length} characters</p>
+          <p>{text.split(" ").filter((element)=>{return element.length!==0}).length * 0.008} minutes to read</p>
           <h2>Preview</h2>
           <p>{text.length>0?text:'Enter you text to preview it here'}</p>
         </div>

@@ -3,7 +3,7 @@ import About from "./components/About";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
-// import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 function App() {
   const[mode, setMode] = useState('light')
@@ -38,23 +38,20 @@ function App() {
   
   return (
     <>
-    {/* <Router>     */}
+    <Router>    
       {/* <Navbar title="TextUtils" aboutText="About TextUtils"/> */}
       {/* <Navbar/> */}
       {/* toggleMode function sent as props*/}
       <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode}/>  
       <Alert alertMsg={alertMsg}/>
       <div className="container">
-        {/* <Routes> */}
-          {/* <Route exact path="/" element={<TextForm heading="Converter" mode={mode} showAlert={showAlert}/>}/> */}
-            <TextForm heading="Converter" mode={mode} showAlert={showAlert}/>
-          {/* </Route> */}
-          {/* <Route exact path="/about" element={<About />}/> */}
-            
-          {/* </Route> */}
-        {/* </Routes>         */}
+        <Routes>
+          <Route exact path="/" element={<TextForm heading="Converter" mode={mode} showAlert={showAlert}/>}/>
+            {/* <TextForm heading="Converter" mode={mode} showAlert={showAlert}/> */}          
+          <Route exact path="/about" element={<About mode={mode}/>}/>   
+        </Routes>        
       </div>
-      {/* </Router> */}
+      </Router>
     </>
   );
 }
